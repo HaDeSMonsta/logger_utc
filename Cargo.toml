@@ -1,7 +1,7 @@
 [package]
 name = "logger_utc"
 description = "Log your messages with a time stamp to stdout or a file"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 authors = ["HaDeSMonsta"]
 license = "Apache-2.0"

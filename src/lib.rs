@@ -50,7 +50,7 @@ pub fn log_to_file(to_log: &str, file_name: &str) -> Result<()> {
 /// # Examples
 fn mk_str(to_log: &str) -> String {
     let now = Utc::now()
-        .format("[%Y-%m-%d] - [%h:%M-%S]")
+        .format("[%Y-%m-%d] - [%H:%M-%S]")
         .to_string();
     let msg = format!("{now} - {to_log}");
 
