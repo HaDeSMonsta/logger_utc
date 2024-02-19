@@ -26,7 +26,7 @@ pub fn log(to_log: &str) {
 /// # Errors
 ///
 /// This function will return an error if it is unable to write to the log file.
-pub fn log_file(to_log: &str, file_name: &str) -> Result<()> {
+pub fn log_to_file(to_log: &str, file_name: &str) -> Result<()> {
     let file = OpenOptions::new()
         .create(true)
         .write(true)
