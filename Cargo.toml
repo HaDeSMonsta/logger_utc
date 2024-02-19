@@ -4,6 +4,8 @@ description = "Log your messages with a time stamp to stdout or a file"
 version = "0.1.3"
 edition = "2021"
 authors = ["HaDeSMonsta"]
+readme = "README.md"
+repository = "https://github.com/HaDeSMonsta/logger_utc"
 license = "Apache-2.0"
 
 [dependencies]
