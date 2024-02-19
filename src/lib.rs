@@ -1,3 +1,9 @@
+//! # logger_utc: Logging with time stamp for Rust
+//!
+//! logger_utc provides a handful of functions to log
+//! a given message with a time stamp to stdout, a fixed file name,
+//! or a dynamic file name, based on the UTC date.
+
 use std::fs::OpenOptions;
 use std::io::{BufWriter, Result, Write};
 
