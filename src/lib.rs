@@ -68,7 +68,7 @@ pub fn log_to_file(to_log: &str, file_name: &str) -> Result<()> {
 
     let msg = mk_str(to_log);
 
-    write!(writer, "{msg}")?;
+    writeln!(writer, "{msg}")?;
     Ok(())
 }
 
