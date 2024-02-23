@@ -25,7 +25,7 @@ use chrono::Utc;
 /// }
 /// ```
 ///
-/// This will print `[%Y-%m-%d] - [%H:%M-%S] - MSG` to the console.
+/// This will print `[%Y-%m-%d] - [%H:%M:%S] - MSG` to the console.
 pub fn log(to_log: &str) {
     println!("{}", mk_str(to_log));
 }
@@ -51,7 +51,7 @@ pub fn log(to_log: &str) {
 /// }
 /// ```
 ///
-/// This will log `[%Y-%m-%d] - [%H:%M-%S] - MSG` to the file `err.log`.
+/// This will log `[%Y-%m-%d] - [%H:%M:%S] - MSG` to the file `err.log`.
 ///
 /// # Errors
 ///
@@ -94,7 +94,7 @@ pub fn log_to_file(to_log: &str, file_name: &str) -> Result<()> {
 /// }
 /// ```
 ///
-/// This will log `[%Y-%m-%d] - [%H:%M-%S] - MSG` to the file `logs/%Y-%m-%d-err.log`.
+/// This will log `[%Y-%m-%d] - [%H:%M:%S] - MSG` to the file `logs/%Y-%m-%d-err.log`.
 ///
 /// # Errors
 ///
@@ -125,7 +125,7 @@ pub fn log_to_dyn_file(to_log: &str, file_path: Option<&str>, file_name: &str) -
 /// # Examples
 fn mk_str(to_log: &str) -> String {
     let now = Utc::now()
-        .format("[%Y-%m-%d] - [%H:%M-%S]")
+        .format("[%Y-%m-%d] - [%H:%M:%S]")
         .to_string();
     let msg = format!("{now} - {to_log}");
 
