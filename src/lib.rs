@@ -60,6 +60,7 @@ pub fn log_to_file(to_log: &str, file_name: &str) -> Result<()> {
     let file = OpenOptions::new()
         .create(true)
         .write(true)
+        .append(true)
         .open(file_name)
         .expect("Unable to open logfile");
 
@@ -78,7 +79,8 @@ pub fn log_to_file(to_log: &str, file_name: &str) -> Result<()> {
 /// # Arguments
 ///
 /// - `to_log`: The log string to be written to the file.
-/// - `file_path`: Optional file path where the file will be saved including a '/' at the end.
+/// - `file_path`: Optional file path where the file will be saved at the end.
+/// '/' can be included, if not, it will be appended.
 /// If not provided, the file will be saved in the current directory.
 /// - `file_name`: The name of the file without date prefix.
 ///
@@ -102,8 +104,10 @@ pub fn log_to_dyn_file(to_log: &str, file_path: Option<&str>, file_name: &str) -
         .format("%Y-%m-%d")
         .to_string();
     let path = match file_path {
-        Some(path) => { path }
-        None => { "" }
+        Some(path) => {
+            if path.ends_with("/") { path.to_string() } else { format!("{path}/") }
+        }
+        None => { String::new() }
     };
 
     let combined_file_path = &format!("{path}{date}-{file_name}");
