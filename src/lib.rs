@@ -80,7 +80,7 @@ pub fn log_to_file(to_log: &str, file_name: &str) -> Result<()> {
 ///
 /// - `to_log`: The log string to be written to the file.
 /// - `file_path`: Optional file path where the file will be saved at the end.
-/// '/' can be included, if not, it will be appended.
+/// needs to include a '/' at the end for unix to allow Windows usage
 /// If not provided, the file will be saved in the current directory.
 /// - `file_name`: The name of the file without date prefix.
 ///
@@ -103,16 +103,11 @@ pub fn log_to_dyn_file(to_log: &str, file_path: Option<&str>, file_name: &str) -
     let date = Utc::now()
         .format("%Y-%m-%d")
         .to_string();
-    let path = match file_path {
-        Some(path) => {
-            if path.ends_with("/") { path.to_string() } else { format!("{path}/") }
-        }
-        None => { String::new() }
-    };
+    let path = file_path.unwrap_or("");
 
-    let combined_file_path = &format!("{path}{date}-{file_name}");
+    let combined_file_path = format!("{path}{date}-{file_name}");
 
-    log_to_file(to_log, combined_file_path)?;
+    log_to_file(to_log, &combined_file_path)?;
     Ok(())
 }
 
